@@ -1,0 +1,8 @@
+{
+  "name": "api-tuga",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Claudio-Lins/api-tuga.git",
+  "author": "Claudio Lins <69011104+Claudio-Lins@users.noreply.github.com>",
+  "license": "MIT"
+}
