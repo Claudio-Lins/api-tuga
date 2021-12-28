@@ -1,5 +1,5 @@
 const express = require('express');
-import dotenv from 'dotenv';
+const dotenv = require('dotenv');
 
 const cors = require('cors');
 const app = express();
