@@ -17,7 +17,7 @@ const sequelize = new Sequelize(
 sequelize
   .authenticate()
   .then(() => {
-    console.log('Connection with DB has been established successfully.')
+    console.log('Connection with DB has been established successfully!')
   })
   .catch(() => {
     console.log('Unable to connect to the database')
@@ -51,3 +51,10 @@ module.exports = sequelize
 //   })
 
 // module.exports = sequelize
+
+
+
+// DB_NAME=sintoniz_develop-api
+// DB_USER=sintoniz_clins
+// DB_PASS=sq88e2iutGi7
+// DB_HOST=185.240.248.86
