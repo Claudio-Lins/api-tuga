@@ -13,7 +13,7 @@ exports.delete = (req, res, next) => {
 };
 
 exports.get = (req, res, next) => {
-  res.status(200).send('Rota GET Ok!');
+  res.status(200).send('Add Page not Found');
 };
 
 exports.getById = (req, res, next) => {
