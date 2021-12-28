@@ -1,3 +1,5 @@
+const Newsletter = require('../models/Newsletter');
+
 exports.post = (req, res, next) => {
   res.status(201).send('Rota POST!');
 };
@@ -13,7 +15,7 @@ exports.delete = (req, res, next) => {
 };
 
 exports.get = (req, res, next) => {
-  res.status(200).send('Page not found!!!!');
+  res.status(200).send('connect Mysql');
 };
 
 exports.getById = (req, res, next) => {
