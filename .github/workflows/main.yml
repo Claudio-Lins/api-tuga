@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - develop
+      - main
 name: 🚀 Deploy test website on push
 jobs:
   web-deploy:
@@ -18,3 +18,4 @@ jobs:
           username: clins@develop.sintoniza-t.pt
           password: ruw_n36JHQbw
           server-dir: api
+          
