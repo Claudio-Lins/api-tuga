@@ -25,6 +25,6 @@ const Newsletter = mysql.define('Newsletter',{
   }
 );
 
-// Newsletter.sync({ alter: true })
+Newsletter.sync({ alter: true })
 
 module.exports = Newsletter;

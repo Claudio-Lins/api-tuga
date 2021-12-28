@@ -15,7 +15,13 @@ exports.delete = (req, res, next) => {
 };
 
 exports.get = (req, res, next) => {
-  res.status(200).send('connect Mysql');
+  Newsletter.findAll()
+    .then(newsletter => {
+      res.status(200).json(newsletter);
+    })
+    .catch(err => {
+      res.status(500).send(err);
+    })
 };
 
 exports.getById = (req, res, next) => {
