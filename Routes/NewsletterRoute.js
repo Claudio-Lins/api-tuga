@@ -4,5 +4,5 @@ module.exports = (app) => {
    app.put('/newsletter/:id', NewsletterController.put);
    app.delete('/newsletter/:id', NewsletterController.delete);
    app.get('/newsletters', NewsletterController.get);
-   app.get('/newsletters/:id', NewsletterController.getById);
+   app.get('/newsletter/:id', NewsletterController.getById);
 }
