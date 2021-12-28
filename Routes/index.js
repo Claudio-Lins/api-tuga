@@ -1,4 +1,4 @@
-const UsuarioRoute = require('./UsuarioRoute');
+const NewsletterRoute = require('./NewsletterRoute');
 module.exports = (app) => {
-   UsuarioRoute(app)
+  NewsletterRoute(app)
 }
