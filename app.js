@@ -101,12 +101,20 @@ app.put('/add-schedule/:id', async (req, res) => {
 })
 
 
+// app.get('/schedule', async (req, res) => {
+//   const listSchedule = await Schedule.findAll({
+//     attributes: ['id', 'title', 'subtitle', 'timeStart', 'columnDay', 'duration', 'createdAt'],
+//   })
+//   res.json(listSchedule)
+// })
+
 app.get('/schedule', async (req, res) => {
-  const listSchedule = await Schedule.findAll({
+  const schedules = await Schedule.findAll({
     attributes: ['id', 'title', 'subtitle', 'timeStart', 'columnDay', 'duration', 'createdAt'],
   })
-  res.json(listSchedule)
+  res.json(schedules)
 })
+
 
 app.listen(8080, () => {
   console.log('Server running on port 8080')
