@@ -108,6 +108,16 @@ app.get('/schedule', async (req, res) => {
   return res.json(listSchedule)
 })
 
+app.get('/schedule/:id', async (req, res) => {
+  const schedule = await Schedule.findOne({
+    where: {
+      id: req.params.id,
+    },
+  })
+  return res.json(schedule)
+})
+
+
 
 app.listen(8080, () => {
   console.log('Server running on port 8080')
