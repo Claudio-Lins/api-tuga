@@ -1,17 +1,7 @@
-import { Model, DataTypes } from 'sequelize';
-import { sequelize } from '../instances/mysql';
+const { Sequelise, DataTypes, Model } = require('sequelize');
+const mysql = require('../instances/mysql');
 
-export interface ScheduleInstance extends Model {
-  id: number;
-  timeStart: number;
-  columnDay: number;
-  title: string;
-  subtitle: string;
-  duration: number;
-}
-
-export const Schedule = sequelize.define<ScheduleInstance>(
-  'Schedule',
+const Schedule = mysql.define('Schedule',
   {
     id: {
       type: DataTypes.INTEGER,
@@ -48,3 +38,5 @@ export const Schedule = sequelize.define<ScheduleInstance>(
 );
 
 // Schedule.sync({ alter: true })
+
+module.exports = Schedule;

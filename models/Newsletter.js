@@ -1,5 +1,3 @@
-// import { Model, DataTypes } from 'sequelize';
-// import { sequelize } from '../instances/mysql';
 
 const { Sequelise, DataTypes, Model } = require('sequelize');
 const mysql = require('../instances/mysql');
@@ -21,10 +19,11 @@ const Newsletter = mysql.define('Newsletter',{
     }
   },
   {
+    tableName: 'newsletters',
     timestamps: true,
   }
 );
 
-Newsletter.sync({ alter: true })
+// Newsletter.sync({ alter: true })
 
 module.exports = Newsletter;

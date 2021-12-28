@@ -16,8 +16,8 @@ exports.delete = (req, res, next) => {
 
 exports.get = (req, res, next) => {
   Newsletter.findAll()
-    .then(newsletter => {
-      res.status(200).json(newsletter);
+    .then(newsletters => {
+      res.status(200).json(newsletters);
     })
     .catch(err => {
       res.status(500).send(err);
