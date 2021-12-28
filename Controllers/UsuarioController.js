@@ -13,7 +13,7 @@ exports.delete = (req, res, next) => {
 };
 
 exports.get = (req, res, next) => {
-  res.status(200).send('Add Dotenv');
+  res.status(200).send('Page not found!!!!');
 };
 
 exports.getById = (req, res, next) => {
