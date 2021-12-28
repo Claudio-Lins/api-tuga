@@ -30,6 +30,6 @@ const Schedule = db.define('schedule', {
   }
 })
 
-Schedule.sync({ alter: true })
+// Schedule.sync({ alter: true })
 
 module.exports = Schedule
