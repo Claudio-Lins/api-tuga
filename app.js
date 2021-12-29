@@ -3,7 +3,9 @@ const dotenv = require('dotenv');
 
 const cors = require('cors');
 const app = express();
-require('./Routes/index')(app);
+require('./Routes/newsletter')(app);
+require('./Routes/schedule')(app);
+require('./Routes/voluntariado')(app);
 
 dotenv.config();
 
@@ -17,5 +19,5 @@ app.use((req, res) => {
 })
 
 app.listen(process.env.PORT, () => {
-    console.log('Server started on port 4000!');
+    console.log(`Server started on port ${process.env.PORT}!`);
 });

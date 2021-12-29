@@ -1,16 +1,7 @@
-import { Model, DataTypes } from 'sequelize';
-import { sequelize } from '../instances/mysql';
+const { Sequelise, DataTypes, Model } = require('sequelize');
+const mysql = require('../instances/mysql');
 
-export interface VoluntariadoInstance extends Model {
-  id: number;
-  name: string;
-  email: string;
-  telemovel: string;
-  files: [Object]
-}
-
-export const Voluntariado = sequelize.define<VoluntariadoInstance>(
-  'Voluntariado',
+const Voluntariado = mysql.define('Voluntariado',
   {
     id: {
       type: DataTypes.INTEGER,
@@ -37,3 +28,5 @@ export const Voluntariado = sequelize.define<VoluntariadoInstance>(
 );
 
 // Voluntariado.sync({ alter: true })
+
+module.exports = Voluntariado;

@@ -32,7 +32,7 @@ const Schedule = mysql.define('Schedule',
     }
   },
   {
-    tableName: 'schedule',
+    tableName: 'schedules',
     timestamps: true,
   }
 );
