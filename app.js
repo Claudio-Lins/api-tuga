@@ -11,6 +11,16 @@ app.get('/', (req, res) => {
   res.send('Hello World');
 });
 
+app.get('/newsletter/:id', (req, res) => {
+  Newsletter.findByPk(req.params.id)
+    .then(newsletter => {
+      res.json(newsletter);
+    })
+    .catch(err => {
+      res.json({ error: err });
+    });
+})
+
 app.post('/newsletter', async (req, res) => {
   const createNewsletter = await Newsletter.create(
     req.body
