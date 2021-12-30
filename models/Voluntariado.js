@@ -10,23 +10,27 @@ const Voluntariado = mysql.define('Voluntariado',
     },
     name: {
       type: DataTypes.STRING,
+      allowNull: true
     },
     email: {
       type: DataTypes.STRING,
+      allowNull: true
     },
     telemovel: {
       type: DataTypes.STRING,
+      allowNull: true
     },
     fileUrl: {
       type: DataTypes.STRING,
+      allowNull: true
     }
   },
   {
     tableName: 'voluntariados',
-    timestamps: true,
+    timestamps: true
   }
 );
 
-// Voluntariado.sync({ alter: true })
+Voluntariado.sync({ alter: true })
 
 module.exports = Voluntariado;
