@@ -7,8 +7,10 @@ const Newsletter = require('./models/Newsletter');
 
 app.use(express.json());
 
-app.get('/', (req, res) => {
-  res.send('Hello World');
+app.get('/newsletter', (req, res) => {
+  Newsletter.findAll()
+    .then(newsletter => res.json(newsletter))
+    .catch(error => res.status(400).json(error));
 });
 
 app.get('/newsletter/:id', (req, res) => {
