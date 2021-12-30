@@ -31,6 +31,6 @@ const Voluntariado = mysql.define('Voluntariado',
   }
 );
 
-Voluntariado.sync({ alter: true })
+// Voluntariado.sync({ alter: true })
 
 module.exports = Voluntariado;

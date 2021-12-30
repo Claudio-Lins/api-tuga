@@ -4,6 +4,7 @@ const app = express();
 // GET ROUTE FOR NEWSLETTER
 const newsletter = require('./routes/newsletter');
 const schedule = require('./routes/schedule');
+const voluntariado = require('./routes/voluntariado');
 
 app.use(express.json());
 
@@ -16,6 +17,9 @@ app.use('/:id', newsletter);
 
 app.use('/', schedule);
 app.use('/:id', schedule); 
+
+app.use('/', voluntariado);
+app.use('/:id', voluntariado); 
 
 app.listen(4000, () => {
   console.log('Listening on port 4000');
