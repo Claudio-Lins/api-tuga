@@ -1,7 +1,13 @@
 const Voluntariado = require('../models/Voluntariado');
 
-exports.post = (req, res, next) => {
-  res.status(201).send('Rota POST!');
+//POST /Voluntariado
+
+
+exports.post = (req, res) => {
+  console.log(req.body);
+  return res.json(req.body);
+  
+  
 };
 
 exports.put = (req, res, next) => {
@@ -16,12 +22,12 @@ exports.delete = (req, res, next) => {
 
 exports.get = (req, res, next) => {
   Voluntariado.findAll()
-    .then(voluntariado => {
+    .then((voluntariado) => {
       res.status(200).json(voluntariado);
     })
-    .catch(err => {
+    .catch((err) => {
       res.status(500).send(err);
-    })
+    });
 };
 
 exports.getById = (req, res, next) => {

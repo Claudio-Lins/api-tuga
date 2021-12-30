@@ -1,8 +1,8 @@
 const VoluntariadoController = require('../Controllers/VoluntariadoController');
 module.exports = (app) => {
-   app.post('/Voluntariado', VoluntariadoController.post);
-   app.put('/Voluntariado/:id', VoluntariadoController.put);
-   app.delete('/Voluntariado/:id', VoluntariadoController.delete);
-   app.get('/Voluntariado', VoluntariadoController.get);
-   app.get('/Voluntariado/:id', VoluntariadoController.getById);
+   app.post('/voluntariado', VoluntariadoController.post);
+   app.put('/voluntariado/:id', VoluntariadoController.put);
+   app.delete('/voluntariado/:id', VoluntariadoController.delete);
+   app.get('/voluntariado', VoluntariadoController.get);
+   app.get('/voluntariado/:id', VoluntariadoController.getById);
 }
