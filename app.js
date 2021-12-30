@@ -23,8 +23,8 @@ app.get('/newsletter/:id', (req, res) => {
     });
 })
 
-app.post('/newsletter', async (req, res) => {
-  const createNewsletter = await Newsletter.create(
+app.post('/newsletter', (req, res) => {
+  Newsletter.create(
     req.body
   ).then(function() {
     res.send('Newsletter created');
@@ -32,6 +32,35 @@ app.post('/newsletter', async (req, res) => {
     res.send(err);
   })
 });
+
+app.put('/newsletter/:id', (req, res) => {
+  Newsletter.update(
+    req.body,
+    {
+      where: {
+        id: req.params.id
+      }
+    }
+  ).then(function() {
+    res.send('Newsletter updated');
+  }).catch(function(err) {
+    res.send(err);
+  })
+})
+
+app.delete('/newsletter/:id', (req, res) => {
+  Newsletter.destroy(
+    {
+      where: {
+        id: req.params.id
+      }
+    }
+  ).then(function() {
+    res.send('Newsletter deleted');
+  }).catch(function(err) {
+    res.send(err);
+  })
+})
 
 app.listen(4000, () => {
   console.log('Listening on port 4000');
