@@ -1,17 +1,17 @@
 const express = require('express');
 const app = express();
 
+// GET ROUTE FOR NEWSLETTER
+const newsletter = require('./routes/newsletter');
+
 app.use(express.json());
 
 const Newsletter = require('./models/Newsletter');
 
 app.use(express.json());
 
-app.get('/newsletter', (req, res) => {
-  Newsletter.findAll()
-    .then(newsletter => res.json(newsletter))
-    .catch(error => res.status(400).json(error));
-});
+//ROUTES 
+app.use('/newsletter', newsletter);
 
 app.get('/newsletter/:id', (req, res) => {
   Newsletter.findByPk(req.params.id)
