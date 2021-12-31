@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const sharp = require("sharp");
-const unlink = require("fs/promises");
+// const unlink = require("fs/promises");
 const fs = require("fs");
 const path = require("path");
 
@@ -40,11 +40,11 @@ router.post(
           .toFile("./public/voluntariado/" + req.file.filename);
 
         // await unlink(req.file.path);
-        await fs.unlink(req.file.path, (err) => {
-          if (err) {
-            console.log(err);
-          }
-        });
+        // await fs.unlink(req.file.path, (err) => {
+        //   if (err) {
+        //     console.log(err);
+        //   }
+        // });
         const { filename } = req.file;
         const { name, email, telemovel } = req.body;
         const newVoluntariado = await Voluntariado.create({
