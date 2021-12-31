@@ -40,6 +40,12 @@ router.post('/voluntariado', uploadFile.single('curriculo'), async (req, res) =>
         .toFile('./public/voluntariado/' + req.file.filename);
 
       // await unlink(req.file.path);
+      await fs.unlink(req.file.path, (err) => {
+        if (err) {
+          console.log(err);
+        }
+      }
+      );
     }
     return res.json({
       message: 'Archivo subido correctamente'
