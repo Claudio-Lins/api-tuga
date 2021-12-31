@@ -10,6 +10,9 @@ module.exports = (multer({
       cb(null, Date.now().toString() + '_' + file.originalname)
     }
   }),
+  limits: {
+    fileSize: 1024 * 1024 * 5,
+  },
   fileFilter: (req, file, cb) => {
     const filetypes = /pdf|jpeg|jpg|JPG|png|gif/;
     const mimetype = filetypes.test(file.mimetype);
