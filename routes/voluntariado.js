@@ -1,87 +1,93 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const sharp = require('sharp');
-const unlink = require('fs/promises');
-const fs = require('fs');
-const path = require('path');
+const sharp = require("sharp");
+const unlink = require("fs/promises");
+const fs = require("fs");
+const path = require("path");
 
-const uploadFile = require('../middlewares/voluntariadoMiddleware');
+const uploadFile = require("../middlewares/voluntariadoMiddleware");
 
-const Voluntariado = require('../models/Voluntariado');
+const Voluntariado = require("../models/Voluntariado");
 
-
-
-router.get('/voluntariado', (req, res) => {
+router.get("/voluntariado", (req, res) => {
   Voluntariado.findAll()
-      .then(voluntariado => res.json(voluntariado))
-      .catch(error => res.status(400).json(error));
-  });
+    .then((voluntariado) => res.json(voluntariado))
+    .catch((error) => res.status(400).json(error));
+});
 
-router.get('/voluntariado/:id', (req, res) => {
+router.get("/voluntariado/:id", (req, res) => {
   Voluntariado.findByPk(req.params.id)
-    .then(voluntariado => {
+    .then((voluntariado) => {
       res.json(voluntariado);
     })
-    .catch(err => {
+    .catch((err) => {
       res.json({ error: err });
     });
-})
+});
 
+router.post(
+  "/voluntariado",
+  uploadFile.single("curriculo"),
+  async (req, res) => {
+    if (req.file) {
+      if (
+        req.file.mimetype === "image/jpg" ||
+        req.file.mimetype === "image/jpeg" ||
+        req.file.mimetype === "image/png"
+      ) {
+        await sharp(req.file.path)
+          .resize(1000)
+          .toFile("./public/voluntariado/" + req.file.filename);
 
-router.post('/voluntariado', uploadFile.single('curriculo'), async (req, res) => {
-  if(req.file) {
-    if (
-      req.file.mimetype === 'image/jpg' ||
-      req.file.mimetype === 'image/jpeg' ||
-      req.file.mimetype === 'image/png'
-    ) {
-      await sharp(req.file.path)
-        .resize(1000)
-        .toFile('./public/voluntariado/' + req.file.filename);
-
-      // await unlink(req.file.path);
-      await fs.unlink(req.file.path, (err) => {
-        if (err) {
-          console.log(err);
-        }
+        // await unlink(req.file.path);
+        await fs.unlink(req.file.path, (err) => {
+          if (err) {
+            console.log(err);
+          }
+        });
+        const { filename } = req.file;
+        const { name, email, telemovel } = req.body;
+        const newVoluntariado = await Voluntariado.create({
+          name,
+          email,
+          telemovel,
+          fileUrl: filename,
+        });
+        res.json({ newVoluntariado });
+      } else {
+        res.status(400);
+        res.json({ error: "Tipo de ficheiro não suportado" });
       }
-      );
     }
-    return res.json({
-      message: 'Archivo subido correctamente'
+  }
+);
+
+router.put("/voluntariado/:id", (req, res) => {
+  Voluntariado.update(req.body, {
+    where: {
+      id: req.params.id,
+    },
+  })
+    .then(function () {
+      res.send("Voluntariado updated");
     })
-}})
+    .catch(function (err) {
+      res.send(err);
+    });
+});
 
-
-router.put('/voluntariado/:id', (req, res) => {
-  Voluntariado.update(
-    req.body,
-    {
-      where: {
-        id: req.params.id
-      }
-    }
-  ).then(function() {
-    res.send('Voluntariado updated');
-  }).catch(function(err) {
-    res.send(err);
+router.delete("/voluntariado/:id", (req, res) => {
+  Voluntariado.destroy({
+    where: {
+      id: req.params.id,
+    },
   })
-})
-
-router.delete('/voluntariado/:id', (req, res) => {
-  Voluntariado.destroy(
-    {
-      where: {
-        id: req.params.id
-      }
-    }
-  ).then(function() {
-    res.send('Voluntariado deleted');
-  }).catch(function(err) {
-    res.send(err);
-  })
-})
-
-
+    .then(function () {
+      res.send("Voluntariado deleted");
+    })
+    .catch(function (err) {
+      res.send(err);
+    });
+});
 
 module.exports = router;
