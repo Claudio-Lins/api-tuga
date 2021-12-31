@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
+const uploadFile = require('../middlewares/voluntariadoMiddleware');
+
 const Voluntariado = require('../models/Voluntariado');
 
 
@@ -22,15 +24,12 @@ router.get('/voluntariado/:id', (req, res) => {
 })
 
 
-router.post('/voluntariado', (req, res) => {
-  Voluntariado.create(
-    req.body
-  ).then(function() {
-    res.send('Voluntariado created');
-  }).catch(function(err) {
-    res.send(err);
-  })
-});
+router.post('/voluntariado', uploadFile.single('curriculo'), (req, res) => {
+  if(req.file) {
+    return res.json({
+      message: 'Archivo subido correctamente'
+    })
+}})
 
 
 router.put('/voluntariado/:id', (req, res) => {
