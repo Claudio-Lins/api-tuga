@@ -1,5 +1,9 @@
 const express = require('express');
 const router = express.Router();
+const sharp = require('sharp');
+const unlink = require('fs/promises');
+const fs = require('fs');
+const path = require('path');
 
 const uploadFile = require('../middlewares/voluntariadoMiddleware');
 
@@ -24,8 +28,19 @@ router.get('/voluntariado/:id', (req, res) => {
 })
 
 
-router.post('/voluntariado', uploadFile.single('curriculo'), (req, res) => {
+router.post('/voluntariado', uploadFile.single('curriculo'), async (req, res) => {
   if(req.file) {
+    if (
+      req.file.mimetype === 'image/jpg' ||
+      req.file.mimetype === 'image/jpeg' ||
+      req.file.mimetype === 'image/png'
+    ) {
+      await sharp(req.file.path)
+        .resize(1000)
+        .toFile('./public/voluntariado/' + req.file.filename);
+
+      // await unlink(req.file.path);
+    }
     return res.json({
       message: 'Archivo subido correctamente'
     })
