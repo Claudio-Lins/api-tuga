@@ -8,13 +8,14 @@ const schedule = require('./routes/schedule');
 const voluntariado = require('./routes/voluntariado');
 
 app.use(express.json());
-app.use(cors({
-  headers: {
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type, Authorization, Content-Length, X-Requested-With',
-  }
-}));
+
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Acess-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  res.header('Access-Control-Allow-Headers', 'X-PINGOTHER, Content-Type, Authorization');
+  app.use(cors());
+  next();
+})
 
 //ROUTES 
 app.use('/', newsletter);
