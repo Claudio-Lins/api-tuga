@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const cors = require('cors');
 
 // GET ROUTE FOR NEWSLETTER
 const newsletter = require('./routes/newsletter');
@@ -7,9 +8,7 @@ const schedule = require('./routes/schedule');
 const voluntariado = require('./routes/voluntariado');
 
 app.use(express.json());
-
-
-app.use(express.json());
+app.use(cors());
 
 //ROUTES 
 app.use('/', newsletter);
