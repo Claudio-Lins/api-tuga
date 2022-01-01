@@ -1,8 +1,11 @@
 const express = require('express');
 const router = express.Router();
+const cors = require('cors')
 
 const Newsletter = require('../models/Newsletter');
 
+
+router.use(cors())
 
 
 router.get('/newsletter', (req, res) => {
