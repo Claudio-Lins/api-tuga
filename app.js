@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const cors = require('cors');
+const cors = require('cors')
 
 // GET ROUTE FOR NEWSLETTER
 const newsletter = require('./routes/newsletter');
@@ -10,11 +10,14 @@ const voluntariado = require('./routes/voluntariado');
 app.use(express.json());
 
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Acess-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-  res.header('Access-Control-Allow-Headers', 'X-PINGOTHER, Content-Type, Authorization');
-  app.use(cors());
-  next();
+  res.header('Access-Control-Allow-Origin', '*')
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE')
+  res.header(
+    'Access-Control-Allow-Headers',
+    'X-PINGOTHER, Content-Type, Authorization'
+  )
+  app.use(cors())
+  next()
 })
 
 //ROUTES 
