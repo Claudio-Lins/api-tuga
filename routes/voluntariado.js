@@ -29,37 +29,40 @@ router.post(
   "/voluntariado",
   uploadFile.single("curriculo"),
   async (req, res) => {
-    if (req.file) {
-      if (
-        req.file.mimetype === "image/jpg" ||
-        req.file.mimetype === "image/jpeg" ||
-        req.file.mimetype === "image/png"
-      ) {
-        await sharp(req.file.path)
-          .resize(1000)
-          .toFile("./public/voluntariado/" + req.file.filename);
-
-        // await unlink(req.file.path);
-        // await fs.unlink(req.file.path, (err) => {
-        //   if (err) {
-        //     console.log(err);
-        //   }
-        // });
-        const { filename } = req.file;
-        const { name, email, telemovel } = req.body;
-        const newVoluntariado = await Voluntariado.create({
-          name,
-          email,
-          telemovel,
-          fileUrl: filename,
-        });
+    if (req.file.mimetype == "application/pdf") {
+      const { filename } = req.file;
+      const { name, email, telemovel } = req.body;
+      const newVoluntariado = await Voluntariado.create({
+        name, email, telemovel, fileUrl: filename,});
         res.json({ newVoluntariado });
-      } else {
-        res.status(400);
-        res.json({ error: "Tipo de ficheiro não suportado" });
-      }
+    } else {
+      res.status(400);
+      res.json({ error: "Somente aceito .PDF" });
     }
   }
+
+      // if (
+      //   req.file.mimetype === "image/jpg" ||
+      //   req.file.mimetype === "image/jpeg" ||
+      //   req.file.mimetype === "image/png"
+      // ) {
+      //   await sharp(req.file.path)
+      //     .resize(1000)
+      //     .toFile("./public/voluntariado/" + req.file.filename);
+      //   const { filename } = req.file;
+      //   const { name, email, telemovel } = req.body;
+      //   const newVoluntariado = await Voluntariado.create({
+      //     name,
+      //     email,
+      //     telemovel,
+      //     fileUrl: filename,
+      //   });
+      //   res.json({ newVoluntariado });
+      // } else {
+      //   res.status(400);
+      //   res.json({ error: "Tipo de ficheiro não suportado" });
+      // }
+  
 );
 
 router.put("/voluntariado/:id", (req, res) => {
