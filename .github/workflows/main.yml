@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - main
+      - Develop
 name: 🚀 Deploy test website on push
 jobs:
   web-deploy:
