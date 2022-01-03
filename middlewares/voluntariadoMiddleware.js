@@ -14,12 +14,25 @@ module.exports = multer({
     fileSize: 1024 * 1024 * 5,
   },
   fileFilter: (req, file, cb) => {
-    const filetypes = /pdf|jpeg|jpg|JPG|png|gif/;
-    const mimetype = filetypes.test(file.mimetype);
-    const extname = filetypes.test(path.extname(file.originalname));
-    if (mimetype && extname) {
-      return cb(null, true);
+    if (
+      file.mimetype == "image/png" ||
+      file.mimetype == "image/jpg" ||
+      file.mimetype == "image/jpeg" ||
+      file.mimetype == "image/gif" ||
+      file.mimetype == "application/pdf"
+    ) {
+      cb(null, true);
+    } else {
+      cb(null, false);
     }
-    cb("Error: Archivo no válido");
-  },
+  }
+  // fileFilter: (req, file, cb) => {
+  //   const filetypes = /pdf|jpeg|jpg|JPG|png|gif/;
+  //   const mimetype = filetypes.test(file.mimetype);
+  //   const extname = filetypes.test(path.extname(file.originalname));
+  //   if (mimetype && extname) {
+  //     return cb(null, true);
+  //   }
+  //   cb("Error: Archivo no válido");
+  // },
 });
