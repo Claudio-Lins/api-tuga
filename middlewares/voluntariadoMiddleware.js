@@ -4,7 +4,7 @@ const path = require("path");
 module.exports = multer({
   storage: multer.diskStorage({
     destination: (req, file, cb) => {
-      cb(null, "./tmp");
+      cb(null, "./public/voluntariado/PDF");
     },
     filename: (req, file, cb) => {
       cb(null, Date.now().toString() + "_" + file.originalname);
@@ -15,11 +15,7 @@ module.exports = multer({
   },
   fileFilter: (req, file, cb) => {
     if (
-      file.mimetype == "image/png" ||
-      file.mimetype == "image/jpg" ||
-      file.mimetype == "image/jpeg" ||
-      file.mimetype == "image/gif" ||
-      file.mimetype == "application/pdf"
+      file.mimetype === "application/pdf"
     ) {
       cb(null, true);
     } else {
