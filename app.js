@@ -11,6 +11,7 @@ const cors = require('cors')
 const newsletter = require('./routes/newsletter');
 const schedule = require('./routes/schedule');
 const voluntariado = require('./routes/voluntariado');
+const imprensa = require('./routes/imprensa');
 
 app.use(express.json());
 
@@ -34,6 +35,9 @@ app.use('/:id', schedule);
 
 app.use('/', voluntariado);
 app.use('/:id', voluntariado); 
+
+app.use('/', imprensa);
+app.use('/:id', imprensa); 
 
 app.listen(4000, () => {
   console.log('Listening on port 4000');
