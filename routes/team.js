@@ -27,7 +27,7 @@ router.get("/team/:id", (req, res) => {
 
 router.post(
   "/team",
-  uploadPhoto.single("photo"),
+  uploadPhoto.single("foto"),
   async (req, res) => {
     if (req.file.mimetype == "application/pdf") {
       const { filename } = req.file;
