@@ -29,7 +29,7 @@ router.post(
   "/team",
   uploadFile.single("photo"),
   async (req, res) => {
-    if (req.file.mimetype == "image/jpeg" || req.file.mimetype == "image/png" || req.file.mimetype == "image/jpg" || req.file.mimetype == "image/gif") {
+    if (req.file.mimetype == "application/pdf") {
       const { filename } = req.file;
       const { name, email, telemovel, cargo } = req.body;
       const newTeam = await Team.create({
