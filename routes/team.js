@@ -35,6 +35,10 @@ router.post(
       const newTeam = await Team.create({
         name, email, telemovel, cargo, fileUrl: filename,});
         res.json({ newTeam });
+
+        await sharp(req.file.path)
+          .resize(10)
+
     } else {
       res.status(400);
       res.json({ error: "Somente aceito .jpeg, png, jpg ou gif" });
