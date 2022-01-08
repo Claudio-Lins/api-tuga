@@ -29,40 +29,40 @@ router.post(
   "/team",
   uploadPhoto.single("foto"),
   async (req, res) => {
-    // if (req.file.mimetype == "application/pdf") {
-    //   const { filename } = req.file;
-    //   const { name, email, telemovel, cargo } = req.body;
-    //   const newTeam = await Team.create({
-    //     name, email, telemovel, cargo, fileUrl: filename,});
-    //     res.json({ newTeam });
-    // } else {
-    //   res.status(400);
-    //   res.json({ error: "Somente aceito .jpeg, png, jpg ou gif" });
-    // }
-  
-      if (
-        req.file.mimetype === "image/jpg" ||
-        req.file.mimetype === "image/jpeg" ||
-        req.file.mimetype === "image/png" ||
-        req.file.mimetype === "image/gif"
-      ) {
-        await sharp(req.file.path)
-          .resize(800)
-          .toFile("./public/team/" + req.file.filename);
-        const { filename } = req.file;
-        const { name, email, telemovel, cargo } = req.body;
-        const newTeam = await Team.create({
-          name,
-          email,
-          telemovel,
-          cargo,
-          fileUrl: filename,
-        });
+    if (req.file.mimetype == "image/jpg" || req.file.mimetype == "image/jpeg") {
+      const { filename } = req.file;
+      const { name, email, telemovel, cargo } = req.body;
+      const newTeam = await Team.create({
+        name, email, telemovel, cargo, fileUrl: filename,});
         res.json({ newTeam });
-      } else {
-        res.status(400);
-        res.json({ error: "Tipo de ficheiro não suportado" });
-      }
+    } else {
+      res.status(400);
+      res.json({ error: "Somente aceito .jpeg, png, jpg ou gif" });
+    }
+  
+      // if (
+      //   req.file.mimetype === "image/jpg" ||
+      //   req.file.mimetype === "image/jpeg" ||
+      //   req.file.mimetype === "image/png" ||
+      //   req.file.mimetype === "image/gif"
+      // ) {
+      //   await sharp(req.file.path)
+      //     .resize(800)
+      //     .toFile("./public/team/" + req.file.filename);
+      //   const { filename } = req.file;
+      //   const { name, email, telemovel, cargo } = req.body;
+      //   const newTeam = await Team.create({
+      //     name,
+      //     email,
+      //     telemovel,
+      //     cargo,
+      //     fileUrl: filename,
+      //   });
+      //   res.json({ newTeam });
+      // } else {
+      //   res.status(400);
+      //   res.json({ error: "Tipo de ficheiro não suportado" });
+      // }
   }
 )
 
