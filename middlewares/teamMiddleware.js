@@ -11,7 +11,7 @@ module.exports = multer({
     },
   }),
   limits: {
-    fileSize: 1024 * 1024,
+    fileSize: 1024 * 1024 * 5, 
   },
   fileFilter: (req, file, cb) => {
     if (
