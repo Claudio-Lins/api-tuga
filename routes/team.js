@@ -5,7 +5,7 @@ const sharp = require("sharp");
 const fs = require("fs");
 const path = require("path");
 
-const uploadFile = require("../middlewares/teamMiddleware");
+const uploadPhoto = require("../middlewares/teamMiddleware");
 
 const Team = require("../models/Team");
 
@@ -27,7 +27,7 @@ router.get("/team/:id", (req, res) => {
 
 router.post(
   "/team",
-  uploadFile.single("photo"),
+  uploadPhoto.single("photo"),
   async (req, res) => {
     if (req.file.mimetype == "application/pdf") {
       const { filename } = req.file;
