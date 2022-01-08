@@ -27,7 +27,9 @@ router.get('/team/:id', (req, res) => {
 
 router.post('/team', uploadPhoto.single('foto'), async (req, res) => {
   if (req.file.mimetype == 'image/jpg' || req.file.mimetype == 'image/jpeg') {
-    sharp(req.file.path).resize(10)
+    sharp(req.file.path)
+    .resize(10)
+    .toFile('./public/team/' + req.file.filename)
     const { filename } = req.file
     const { name, email, telemovel, cargo } = req.body
     const newTeam = await Team.create({
