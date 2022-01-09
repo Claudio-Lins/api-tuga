@@ -7,7 +7,7 @@ module.exports = multer({
       cb(null, "./tmp");
     },
     filename: (req, file, cb) => {
-      cb(null, Date.now().toString() + "_" + file.originalname);
+      cb(null, '/' + Date.now().toString() + "_" + file.originalname);
     },
   }),
   limits: {
