@@ -19,7 +19,7 @@ module.exports = multer({
     ) {
       cb(null, true);
     } else {
-      cb(null, true);
+      cb(null, false);
     }
   }
 });
