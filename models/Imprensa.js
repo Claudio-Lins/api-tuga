@@ -31,6 +31,6 @@ const Imprensa = mysql.define('Imprensa',
   }
 );
 
-Imprensa.sync({ alter: true })
+// Imprensa.sync({ alter: true })
 
 module.exports = Imprensa;
