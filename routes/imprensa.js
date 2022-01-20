@@ -42,7 +42,7 @@ router.get('/imprensa/:id', (req, res) => {
 //   }
 // })
 
-router.post('/imprensa', uploadFile.single('destaque'), async (req, res) => {
+router.post('/imprensa', uploadFile?.single('destaque'), async (req, res) => {
   req.file.mimetype == 'application/pdf'
     const { filename } = req.file
     const { title, subtitle, link } = req.body
