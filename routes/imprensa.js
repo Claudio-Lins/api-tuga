@@ -25,25 +25,8 @@ router.get('/imprensa/:id', (req, res) => {
     })
 })
 
-// router.post('/imprensa', uploadFile.single('destaque'), async (req, res) => {
-//   if (req.file.mimetype == 'application/pdf') {
-//     const { filename } = req.file
-//     const { title, subtitle, link } = req.body
-//     const newImprensa = await Imprensa.create({
-//       title,
-//       subtitle,
-//       link,
-//       fileUrl: filename,
-//     })
-//     res.json({ newImprensa })
-//   } else {
-//     res.status(400)
-//     res.json({ error: 'Somente aceito .PDF' })
-//   }
-// })
-
 router.post('/imprensa', uploadFile.single('destaque'), async (req, res) => {
-  req.file.mimetype == 'application/pdf'
+  if (req.file.mimetype == 'application/pdf') {
     const { filename } = req.file
     const { title, subtitle, link } = req.body
     const newImprensa = await Imprensa.create({
@@ -53,7 +36,12 @@ router.post('/imprensa', uploadFile.single('destaque'), async (req, res) => {
       fileUrl: filename,
     })
     res.json({ newImprensa })
+  } else {
+    res.status(400)
+    res.json({ error: 'Somente aceito .PDF' })
+  }
 })
+
 
 router.put('/imprensa/:id', (req, res) => {
   Imprensa.update(req.body, {
