@@ -23,6 +23,6 @@ const ImprensaLink = mysql.define('ImprensaLink',
   }
 );
 
-ImprensaLink.sync({ alter: true })
+// ImprensaLink.sync({ alter: true })
 
 module.exports = ImprensaLink;
