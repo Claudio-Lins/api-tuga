@@ -1,7 +1,7 @@
 const { Sequelise, DataTypes, Model } = require('sequelize');
 const mysql = require('../instances/mysql');
 
-const Imprensa = mysql.define('Imprensa',
+const ImprensaLink = mysql.define('ImprensaLink',
   {
     id: {
       type: DataTypes.INTEGER,
@@ -12,21 +12,17 @@ const Imprensa = mysql.define('Imprensa',
       type: DataTypes.STRING,
       allowNull: true
     },
-    subtitle: {
-      type: DataTypes.STRING,
-      allowNull: true
-    },
-    fileUrl: {
+    link: {
       type: DataTypes.STRING,
       allowNull: true
     }
   },
   {
-    tableName: 'imprensas',
+    tableName: 'imprensaLinks',
     timestamps: true
   }
 );
 
-// Imprensa.sync({ alter: true })
+ImprensaLink.sync({ alter: true })
 
-module.exports = Imprensa;
+module.exports = ImprensaLink;
