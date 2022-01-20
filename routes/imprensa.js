@@ -33,7 +33,7 @@ router.post('/imprensa', uploadFile.single('destaque'), async (req, res) => {
       title,
       subtitle,
       link,
-      fileUrl?: filename,
+      fileUrl: filename,
     })
     res.json({ newImprensa })
   } else {
