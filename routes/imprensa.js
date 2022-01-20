@@ -32,7 +32,6 @@ router.post('/imprensa', uploadFile.single('destaque'), async (req, res) => {
     const newImprensa = await Imprensa.create({
       title,
       subtitle,
-      link,
       fileUrl: filename,
     })
     res.json({ newImprensa })
