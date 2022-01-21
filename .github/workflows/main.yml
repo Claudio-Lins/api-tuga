@@ -15,7 +15,7 @@ jobs:
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
         with:
           server: ftp.sintoniza-t.pt
-          username: clins@sintoniza-t.pt
-          password: XsnftdRq!ZO?
+          username: clins@api-production.sintoniza-t.pt
+          password: QC3UigiPvLZZ
           server-dir: api-production/
           
