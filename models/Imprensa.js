@@ -16,6 +16,10 @@ const Imprensa = mysql.define('Imprensa',
       type: DataTypes.STRING,
       allowNull: true
     },
+    linkYoutube: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
     fileUrl: {
       type: DataTypes.STRING,
       allowNull: true
@@ -27,6 +31,6 @@ const Imprensa = mysql.define('Imprensa',
   }
 );
 
-// Imprensa.sync({ alter: true })
+Imprensa.sync({ alter: true })
 
 module.exports = Imprensa;
