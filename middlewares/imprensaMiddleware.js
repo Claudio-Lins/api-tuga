@@ -13,13 +13,13 @@ module.exports = multer({
   limits: {
     fileSize: 1024 * 1024 * 5,
   },
-  fileFilter: (req, file, cb) => {
-    if (
-      file.mimetype === "application/pdf"
-    ) {
-      cb(null, true);
-    } else {
-      cb(null, false);
-    }
-  }
+  // fileFilter: (req, file, cb) => {
+  //   if (
+  //     file.mimetype === "application/pdf"
+  //   ) {
+  //     cb(null, true);
+  //   } else {
+  //     cb(null, false);
+  //   }
+  // }
 });
