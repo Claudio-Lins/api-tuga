@@ -16,6 +16,6 @@ jobs:
         with:
           server: ftp.sintoniza-t.pt
           username: clins@api-production.sintoniza-t.pt
-          password: QC3UigiPvLZZ
+          password: wrVNyF5Iew5Z
           server-dir: api-production/
           
