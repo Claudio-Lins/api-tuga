@@ -12,10 +12,6 @@ const Imprensa = mysql.define('Imprensa',
       type: DataTypes.STRING,
       allowNull: true
     },
-    subtitle: {
-      type: DataTypes.STRING,
-      allowNull: true
-    },
     linkYoutube: {
       type: DataTypes.STRING,
       allowNull: true
