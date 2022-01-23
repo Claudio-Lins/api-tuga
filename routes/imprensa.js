@@ -26,26 +26,16 @@ router.get('/imprensa/:id', (req, res) => {
 })
 
 router.post('/imprensa', uploadFile.single('destaque'), async (req, res) => {
-  // post title and linkYoutube
-  if (req.body.title && req.body.linkYoutube) {
+  if (req.file.mimetype == 'application/pdf') {
+    const { filename } = req.file
+    const { title, linkYoutube } = req.body
     const newImprensa = await Imprensa.create({
       title,
       linkYoutube,
+      fileUrl: filename,
     })
-    res.json(newImprensa)
-  }
-
-  // if (req.file.mimetype == 'application/pdf') {
-  //   const { filename } = req.file
-  //   const { title, subtitle, linkYoutube } = req.body
-  //   const newImprensa = await Imprensa.create({
-  //     title,
-  //     subtitle,
-  //     linkYoutube,
-  //     fileUrl: filename,
-  //   })
-  //   res.json({ newImprensa })
-  // } 
+    res.json({ newImprensa })
+  } 
   else {
     res.status(400)
     res.json({ error: 'Somente aceito .PDF' })
