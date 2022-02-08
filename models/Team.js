@@ -12,6 +12,10 @@ const Team = mysql.define('Team',
       type: DataTypes.STRING,
       allowNull: true
     },
+    nationality: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
     email: {
       type: DataTypes.STRING,
       allowNull: true
