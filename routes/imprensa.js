@@ -35,7 +35,8 @@ router.post('/imprensa', uploadFile.single('destaque'), async (req, res) => {
       fileUrl: filename,
     })
     res.json({ newImprensa })
-  } else {
+  } 
+  else {
     res.status(400)
     res.json({ error: 'Somente aceito .PDF' })
   }

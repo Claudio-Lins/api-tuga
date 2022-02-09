@@ -31,10 +31,11 @@ router.post('/team', uploadPhoto.single('foto'), async (req, res) => {
     .resize(1000)
     .toFile('./public/team/' + req.file.filename)
     const { filename } = req.file
-    const { name, email, telemovel, cargo } = req.body
+    const { name, email, nationality, telemovel, cargo } = req.body
     const newTeam = await Team.create({
       name,
       email,
+      nationality,
       telemovel,
       cargo,
       fileUrl: filename,
