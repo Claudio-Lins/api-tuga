@@ -28,10 +28,11 @@ router.get('/imprensa/:id', (req, res) => {
 router.post('/imprensa', uploadFile.single('destaque'), async (req, res) => {
   if (req.file.mimetype == 'application/pdf') {
     const { filename } = req.file
-    const { title, linkYoutube } = req.body
+    const { title, linkYoutube, datePublished } = req.body
     const newImprensa = await Imprensa.create({
       title,
       linkYoutube,
+      datePublished,
       fileUrl: filename,
     })
     res.json({ newImprensa })

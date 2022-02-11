@@ -16,6 +16,10 @@ const Imprensa = mysql.define('Imprensa',
       type: DataTypes.STRING,
       allowNull: true
     },
+    datePublished: {
+      type: DataTypes.DATE,
+      allowNull: true
+    },
     fileUrl: {
       type: DataTypes.STRING,
       allowNull: true
