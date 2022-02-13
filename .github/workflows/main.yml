@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - Main
+      - main
 name: 🚀 Deploy test website on push
 jobs:
   web-deploy:
@@ -15,7 +15,7 @@ jobs:
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
         with:
           server: ftp.sintoniza-t.pt
-          username: clins@sintoniza-t.pt
-          password: XsnftdRq!ZO?
-          server-dir: api-production/
+          username: sintoniz
+          password: K.2tZGu8eZ*8a9
+          server-dir: api.sintoniza-t.pt/production/
           
