@@ -17,5 +17,5 @@ jobs:
           server: ftp.sintoniza-t.pt
           username: sintoniz
           password: K.2tZGu8eZ*8a9
-          server-dir: api.sintoniza-t.pt/prod
+          server-dir: api.sintoniza-t.pt/prod/
           
