@@ -13,15 +13,7 @@ module.exports = multer({
   limits: {
     fileSize: 1024 * 1024 * 5, 
   },
-  // fileFilter: (req, file, cb) => {
-  //   if (
-  //     file.mimetype === "image/png" || 'image/jpg' || 'image/jpeg' || 'image/gif'
-  //   ) {
-  //     cb(null, true);
-  //   } else {
-  //     cb(null, false);
-  //   }
-  // }
+ 
   fileFilter: (req, file, cb) => {
     const filetypes = /jpeg|jpg|JPG|png|gif/;
     const mimetype = filetypes.test(file.mimetype);
