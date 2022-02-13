@@ -1,0 +1,21 @@
+on:
+  push:
+    branches:
+      - Main
+name: 🚀 Deploy test website on push
+jobs:
+  web-deploy:
+    name: 🎉 Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v2
+
+      - name: 📂 Sync files
+        uses: SamKirkland/FTP-Deploy-Action@4.0.0
+        with:
+          server: ftp.sintoniza-t.pt
+          username: clins@sintoniza-t.pt
+          password: XsnftdRq!ZO?
+          server-dir: api-production/
+          
