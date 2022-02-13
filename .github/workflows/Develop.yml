@@ -14,8 +14,8 @@ jobs:
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
         with:
-        server: ftp.sintoniza-t.pt
-          username: sintoniz
-          password: K.2tZGu8eZ*8a9
-          server-dir: api.sintoniza-t.pt/develop/
+          server: ftp.sintoniza-t.pt
+          username: clins@develop.sintoniza-t.pt
+          password: ruw_n36JHQbw
+          server-dir: api/
           
