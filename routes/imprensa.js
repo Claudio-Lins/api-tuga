@@ -25,7 +25,7 @@ router.get('/imprensa/:id', (req, res) => {
     })
 })
 
-router.post('/imprensa', uploadFile.single('destaque'), async (req, res) => {
+router.post('/imprensa', uploadFile.single('pressPost'), async (req, res) => {
   if (req.file.mimetype == 'application/pdf') {
     const { filename } = req.file
     const { title, linkYoutube, datePublished } = req.body
