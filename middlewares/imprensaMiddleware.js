@@ -15,7 +15,7 @@ module.exports = multer({
   },
   fileFilter: (req, file, cb) => {
     if (
-      file.mimetype === "application/pdf" || file.mimetype === "image/jpg" || file.mimetype === "image/png" || file.mimetype === "image/jpeg"
+      file.mimetype === "application/pdf" || file.mimetype === "image/jpg" || file.mimetype === "image/png" || file.mimetype === "image/jpeg" || file.mimetype === ''
     ) {
       cb(null, true);
     } else {
