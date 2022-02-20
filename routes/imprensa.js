@@ -33,7 +33,7 @@ router.post('/imprensa', uploadFile.single('pressPost'), async (req, res) => {
       title,
       linkYoutube,
       datePublished,
-      fileUrl?: filename,
+      fileUrl: filename,
     })
     res.json({ newImprensa })
   } 
