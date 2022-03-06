@@ -25,7 +25,7 @@ router.get('/imprensa/:id', (req, res) => {
     })
 })
 
-router.post('/imprensa', async (req, res) => {
+router.post('/imprensa', uploadData, async (req, res) => {
   const { title, linkYoutube, datePublished } = req.body
   const newImprensa = await Imprensa.create({
     title,
