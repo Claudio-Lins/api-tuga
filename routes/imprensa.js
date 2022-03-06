@@ -52,13 +52,11 @@ router.post(
 )
 
 router.post('/imprensa', async (req, res) => {
-  const { filename } = req.file
   const { title, linkYoutube, datePublished } = req.body
   const newImprensa = await Imprensa.create({
     title,
     linkYoutube,
     datePublished,
-    fileUrl: filename,
   })
   res.json({ newImprensa })
 })
