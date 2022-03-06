@@ -12,7 +12,6 @@ const newsletter = require('./routes/newsletter');
 const schedule = require('./routes/schedule');
 const voluntariado = require('./routes/voluntariado');
 const imprensa = require('./routes/imprensa');
-const imprensaLink = require('./routes/imprensaLink');
 const team = require('./routes/team');
 const programa = require('./routes/programa');
 
@@ -41,9 +40,6 @@ app.use('/:id', voluntariado);
 
 app.use('/', imprensa);
 app.use('/:id', imprensa); 
-
-app.use('/', imprensaLink);
-app.use('/:id', imprensaLink); 
 
 app.use('/', team);
 app.use('/:id', team); 
