@@ -27,13 +27,13 @@ router.get('/imprensa/:id', (req, res) => {
 
 router.post('/imprensa', uploadFile.single('pressPost'), async (req, res) => {
   // if (req.file.mimetype == 'application/pdf' || req.file.mimetype == 'image/jpg' || req.file.mimetype == 'image/png' || req.file.mimetype == 'image/jpeg') {
-    // const { filename } = req.file
+    const { filename } = req.file
     const { title, linkYoutube, datePublished } = req.body
     const newImprensa = await Imprensa.create({
       title,
       linkYoutube,
       datePublished,
-      // fileUrl: filename,
+      fileUrl: filename,
     })
     res.json({ newImprensa })
   // } 
