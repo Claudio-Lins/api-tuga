@@ -26,15 +26,32 @@ router.get('/imprensa/:id', (req, res) => {
 })
 
 // 
-router.post('/imprensa', (req, res) => {
-  Imprensa.create(
-    req.body
-  ).then(function() {
-    res.send('Imprensa created');
-  }).catch(function(err) {
-    res.send(err);
+// router.post('/imprensa', (req, res) => {
+//   Imprensa.create(
+//     req.body
+//   ).then(function() {
+//     res.send('Imprensa created');
+//   }).catch(function(err) {
+//     res.send(err);
+//   })
+// });
+
+// POST Imprensa
+  router.post('/imprensa', (req, res) => {
+    const { title, linkYoutube, datePublished} = req.body
+    Imprensa.create({
+      title,
+      linkYoutube,
+      datePublished
   })
-});
+    .then(() => {
+      res.send('Imprensa created')
+    })
+    .catch((err) => {
+      res.send(err)
+    })
+  })
+  
 
 // router.post('/imprensa', async (req, res) => {
 //   const { title, linkYoutube, datePublished } = req.body
