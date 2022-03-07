@@ -39,7 +39,9 @@ app.use('/', voluntariado);
 app.use('/:id', voluntariado); 
 
 app.use('/', imprensa);
+app.use('/', imprensaPdf);
 app.use('/:id', imprensa); 
+app.use('/:id', imprensaPdf); 
 
 app.use('/', team);
 app.use('/:id', team); 
