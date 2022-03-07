@@ -25,43 +25,17 @@ router.get('/imprensa/:id', (req, res) => {
     })
 })
 
-// 
-// router.post('/imprensa', (req, res) => {
-//   Imprensa.create(
-//     req.body
-//   ).then(function() {
-//     res.send('Imprensa created');
-//   }).catch(function(err) {
-//     res.send(err);
-//   })
-// });
 
 // POST Imprensa
-  router.post('/imprensa', (req, res) => {
+  router.post('/imprensa', async (req, res) => {
     const { title, linkYoutube, datePublished} = req.body
-    Imprensa.create({
+    const newImprensa = await Imprensa.create({
       title,
       linkYoutube,
-      datePublished
-  })
-    .then(() => {
-      res.send('Imprensa created')
+      datePublished,
     })
-    .catch((err) => {
-      res.send(err)
-    })
+    res.json({ newImprensa })
   })
-  
-
-// router.post('/imprensa', async (req, res) => {
-//   const { title, linkYoutube, datePublished } = req.body
-//   const newImprensa = await Imprensa.create({
-//     title,
-//     linkYoutube,
-//     datePublished,
-//   })
-//   res.json({ newImprensa })
-// })
 
 router.post(
   '/imprensaPdf',
