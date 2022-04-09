@@ -26,7 +26,7 @@ router.get('/horario/:id', (req, res) => {
 })
 
 router.post('/horario', sendData.single('cover'), async (req, res) => {
-  if (req.file.mimetype == 'image/jpg' || req.file.mimetype == 'image/jpeg') {
+  if (req.file.mimetype == 'image/jpg' || req.file.mimetype == 'image/jpeg' || req.file.mimetype == 'image/png') {
     sharp(req.file.path)
     .resize(1000)
     .toFile('./public/horario/' + req.file.filename)
@@ -39,7 +39,7 @@ router.post('/horario', sendData.single('cover'), async (req, res) => {
     res.json({ newHorario })
   } else {
     res.status(400)
-    res.json({ error: 'Somente aceito .jpeg, png, jpg ou gif' })
+    res.json({ error: 'Somente aceito .jpeg, png, jpg' })
   }
 })
 
