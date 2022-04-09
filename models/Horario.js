@@ -17,7 +17,7 @@ const Horario = mysql.define('Imprensa',
       allowNull: true
     },
     hour: {
-      type: DataTypes.DATE,
+      type: DataTypes.STRING,
       allowNull: true
     },
     duration: {

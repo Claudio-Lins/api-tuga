@@ -25,7 +25,7 @@ router.get('/horario/:id', (req, res) => {
     })
 })
 
-router.post('/horario', uploadPhoto.single('foto'), async (req, res) => {
+router.post('/horario', uploadPhoto.single('cover'), async (req, res) => {
   if (req.file.mimetype == 'image/jpg' || req.file.mimetype == 'image/jpeg') {
     sharp(req.file.path)
     .resize(1000)
