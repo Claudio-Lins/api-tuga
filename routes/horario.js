@@ -5,7 +5,7 @@ const sharp = require('sharp')
 const fs = require('fs')
 const path = require('path')
 
-const uploadPhoto = require('../middlewares/horariosMiddleware')
+const sendData = require('../middlewares/horariosMiddleware')
 
 const Horario = require('../models/Horario')
 
@@ -25,7 +25,7 @@ router.get('/horario/:id', (req, res) => {
     })
 })
 
-router.post('/horario', uploadPhoto.single('cover'), async (req, res) => {
+router.post('/horario', sendData.single('cover'), async (req, res) => {
   if (req.file.mimetype == 'image/jpg' || req.file.mimetype == 'image/jpeg') {
     sharp(req.file.path)
     .resize(1000)
