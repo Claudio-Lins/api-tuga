@@ -15,6 +15,7 @@ const imprensa = require('./routes/imprensa');
 const imprensaPdf = require('./routes/imprensa');
 const team = require('./routes/team');
 const programa = require('./routes/programa');
+const horario = require('./routes/horario');
 
 app.use(express.json());
 
@@ -38,6 +39,9 @@ app.use('/:id', schedule);
 
 app.use('/', voluntariado);
 app.use('/:id', voluntariado); 
+
+app.use('/', horario);
+app.use('/:id', horario); 
 
 app.use('/', imprensa);
 app.use('/', imprensaPdf);
