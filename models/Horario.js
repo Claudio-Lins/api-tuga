@@ -8,22 +8,26 @@ const Horario = mysql.define('Imprensa',
       primaryKey: true,
       autoIncrement: true,
     },
+    href: { 
+      type: DataTypes.STRING, 
+      allowNull: false
+     },
+     hour: {
+       type: DataTypes.STRING,
+       allowNull: true
+     },
+     duration: {
+       type: DataTypes.STRING,
+       allowNull: true,
+       defaultValue: '1'
+     },
     title: {
       type: DataTypes.STRING,
       allowNull: true
     },
-    status: {
+    subtitle: {
       type: DataTypes.STRING,
       allowNull: true
-    },
-    hour: {
-      type: DataTypes.STRING,
-      allowNull: true
-    },
-    duration: {
-      type: DataTypes.STRING,
-      allowNull: true,
-      defaultValue: '1'
     },
     fileUrl: {
       type: DataTypes.STRING,

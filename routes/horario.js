@@ -31,9 +31,9 @@ router.post('/horario', sendData.single('cover'), async (req, res) => {
     .resize(1000)
     .toFile('./public/horario/' + req.file.filename)
     const { filename } = req.file
-    const { title, hour, duration, status } = req.body
+    const { href, hour, duration, title, subtitle } = req.body
     const newHorario = await Horario.create({
-      title, hour, duration, status,
+      href, hour, duration, title, subtitle,
       fileUrl: filename,
     })
     res.json({ newHorario })
