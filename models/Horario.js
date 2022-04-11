@@ -1,7 +1,7 @@
 const { Sequelise, DataTypes, Model } = require('sequelize');
 const mysql = require('../instances/mysql');
 
-const Horario = mysql.define('Imprensa',
+const Horario = mysql.define('Horario',
   {
     id: {
       type: DataTypes.INTEGER,
