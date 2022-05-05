@@ -1,7 +1,6 @@
 const express = require('express')
 const router = express.Router()
 const sharp = require('sharp')
-// const unlink = require("fs/promises");
 const fs = require('fs')
 const path = require('path')
 
@@ -31,11 +30,12 @@ router.post('/programa', uploadPhoto.single('cover'), async (req, res) => {
     .resize(1000)
     .toFile('./public/programa/' + req.file.filename)
     const { filename } = req.file
-    const { title, description, playlist } = req.body
+    const { title, description, playlist, ordem } = req.body
     const newPrograma = await Programa.create({
       title,
       description,
       playlist,
+      ordem,
       fileUrl: filename,
     })
     res.json({ newPrograma })

@@ -23,7 +23,13 @@ const Programa = mysql.define('Programa',
     fileUrl: {
       type: DataTypes.STRING,
       allowNull: true
-    }
+    },
+    ordem: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      unique: true
+    },
+
   },
   {
     tableName: 'programas',
