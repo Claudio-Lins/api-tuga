@@ -26,8 +26,7 @@ const Programa = mysql.define('Programa',
     },
     ordem: {
       type: DataTypes.INTEGER,
-      allowNull: false,
-      unique: true
+      allowNull: true,
     },
 
   },
