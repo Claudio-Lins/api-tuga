@@ -26,7 +26,7 @@ router.get('/team/:id', (req, res) => {
 })
 
 router.post('/team', uploadPhoto.single('foto'), async (req, res) => {
-  if (req.file.mimetype == 'image/jpg' || req.file.mimetype == 'image/jpeg') {
+  if (req.file.mimetype === 'image/jpg' || req.file.mimetype === 'image/jpeg' || req.file.mimetype === 'image/png') {
     sharp(req.file.path)
     .resize(1000)
     .toFile('./public/team/' + req.file.filename)
