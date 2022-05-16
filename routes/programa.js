@@ -59,6 +59,20 @@ router.put('/programa/:id', (req, res) => {
     })
 })
 
+router.patch('/programa/:id', (req, res) => {
+  Programa.update(req.body, {
+    where: {
+      id: req.params.id,
+    },
+  })
+    .then(function () {
+      res.send('Programa updated')
+    })
+    .catch(function (err) {
+      res.send(err)
+    })
+})
+
 router.delete('/programa/:id', (req, res) => {
   Programa.destroy({
     where: {
