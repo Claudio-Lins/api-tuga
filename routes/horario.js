@@ -29,7 +29,7 @@ router.post('/horario', sendData.single('cover'), async (req, res) => {
   if (req.file.mimetype == 'image/jpg' || req.file.mimetype == 'image/jpeg' || req.file.mimetype == 'image/png') {
     sharp(req.file.path)
     .resize(1000)
-    .toFile('./public/horarios/' + req.file.filename)
+    .toFile('./public/horario/' + req.file.filename)
     const { filename } = req.file
     const { href, hour, duration, title, subtitle } = req.body
     const newHorario = await Horario.create({
